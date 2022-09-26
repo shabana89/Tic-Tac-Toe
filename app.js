@@ -36,3 +36,19 @@ const ticTacToe = (element, index) => {
     }
   }
 };
+
+function reset() {
+  cells = ["", "", "", "", "", "", "", "", ""];
+  btns.forEach((btn) => {
+    btn.value = "";
+  });
+  currentPlayer = "X";
+  result.innerHTML = "Player X Turn";
+  btns.forEach((btn) => (btn.disabled = false));
+}
+
+document.querySelector("#reset").addEventListener("click", reset);
+
+btns.forEach((btn, i) => {
+  btn.addEventListener("click", () => ticTacToe(btn, i));
+});
